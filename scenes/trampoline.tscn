@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://y2r7vyhui7xo"]
+
+[ext_resource type="Script" path="res://scripts/trampoline.gd" id="1_x2jgo"]
+
+[node name="Trampoline" type="Area2D"]
+script = ExtResource("1_x2jgo")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

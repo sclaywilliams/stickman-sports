@@ -1,0 +1,88 @@
+[gd_scene load_steps=12 format=3 uid="uid://djhvwyibvpscy"]
+
+[ext_resource type="Script" path="res://scripts/character_body_2d.gd" id="1_bm6y3"]
+[ext_resource type="PackedScene" uid="uid://dqf507sokq28n" path="res://scenes/stickman.tscn" id="2_jn16n"]
+[ext_resource type="PackedScene" uid="uid://y2r7vyhui7xo" path="res://scenes/trampoline.tscn" id="3_gypqi"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_uqeq0"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_d1hvv"]
+distance = 2.0
+
+[sub_resource type="Curve" id="Curve_50u4i"]
+_data = [Vector2(0.318681, 0.373626), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="CurveTexture" id="CurveTexture_ng8in"]
+curve = SubResource("Curve_50u4i")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q13vh"]
+size = Vector2(20, 32.5)
+
+[sub_resource type="Gradient" id="Gradient_004dg"]
+offsets = PackedFloat32Array(0.993976, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_y5olh"]
+gradient = SubResource("Gradient_004dg")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xgvb3"]
+size = Vector2(239, 39)
+
+[node name="Game" type="Node2D"]
+
+[node name="Background" type="TextureRect" parent="."]
+offset_left = -55.0
+offset_top = -67.0
+offset_right = 1977.0
+offset_bottom = 1125.0
+texture = SubResource("CanvasTexture_uqeq0")
+
+[node name="Floor" type="StaticBody2D" parent="."]
+position = Vector2(317, 411)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+position = Vector2(581, 608)
+shape = SubResource("WorldBoundaryShape2D_d1hvv")
+
+[node name="TextureRect" type="TextureRect" parent="Floor/CollisionShape2D"]
+offset_left = -985.0
+offset_top = -3.0
+offset_right = 1107.0
+offset_bottom = 204.0
+texture = SubResource("CurveTexture_ng8in")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(1599, 502)
+script = ExtResource("1_bm6y3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("RectangleShape2D_q13vh")
+
+[node name="TextureRect" type="TextureRect" parent="CharacterBody2D/CollisionShape2D"]
+offset_left = -10.0
+offset_top = -16.25
+offset_right = 10.0
+offset_bottom = 15.75
+texture = SubResource("GradientTexture1D_y5olh")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Stickman" parent="." instance=ExtResource("2_jn16n")]
+unique_name_in_owner = true
+position = Vector2(931, 563)
+scale = Vector2(0.2, 0.2)
+
+[node name="Trampoline" parent="." instance=ExtResource("3_gypqi")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Trampoline"]
+position = Vector2(898, 1016)
+shape = SubResource("RectangleShape2D_xgvb3")
+
+[node name="TextureRect" type="TextureRect" parent="Trampoline/CollisionShape2D"]
+offset_left = -128.0
+offset_top = -17.0
+offset_right = 128.0
+offset_bottom = 15.0
+texture = SubResource("GradientTexture1D_y5olh")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
