@@ -1,11 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://c13rl0eoa7fca"]
+[gd_scene load_steps=4 format=3 uid="uid://c13rl0eoa7fca"]
 
+[ext_resource type="Script" path="res://scripts/cliff_diving.gd" id="1_iruth"]
 [ext_resource type="PackedScene" uid="uid://dqf507sokq28n" path="res://scenes/stickman.tscn" id="1_rulcn"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_p418i"]
-size = Vector2(372, 884)
+[ext_resource type="PackedScene" uid="uid://bclj75titb7y4" path="res://scenes/water.tscn" id="3_fnwae"]
 
 [node name="Game" type="Node2D"]
+script = ExtResource("1_iruth")
 
 [node name="Background" type="ColorRect" parent="."]
 offset_right = 1941.0
@@ -15,22 +15,15 @@ offset_bottom = 1098.0
 
 [node name="CliffColour" type="ColorRect" parent="Cliff"]
 offset_left = -45.0
-offset_top = 264.0
+offset_top = 223.0
 offset_right = 327.0
-offset_bottom = 1404.0
+offset_bottom = 1999.0
 color = Color(0.362829, 0.362829, 0.362829, 1)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Cliff"]
-position = Vector2(141, 706)
-shape = SubResource("RectangleShape2D_p418i")
-
-[node name="Water" type="ColorRect" parent="."]
-offset_left = -127.0
-offset_top = 890.0
-offset_right = 2106.0
-offset_bottom = 1131.0
-color = Color(0, 0.505882, 1, 0.505882)
-
 [node name="Stickman" parent="." instance=ExtResource("1_rulcn")]
-position = Vector2(320, 228)
+unique_name_in_owner = true
+position = Vector2(315, 187)
 scale = Vector2(0.2, 0.2)
+
+[node name="Water" parent="." instance=ExtResource("3_fnwae")]
+position = Vector2(235, 40)
