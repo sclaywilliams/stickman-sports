@@ -1,23 +1,24 @@
-[gd_scene load_steps=4 format=3 uid="uid://c13rl0eoa7fca"]
+[gd_scene load_steps=6 format=3 uid="uid://c13rl0eoa7fca"]
 
 [ext_resource type="Script" path="res://scripts/cliff_diving.gd" id="1_iruth"]
 [ext_resource type="PackedScene" uid="uid://dqf507sokq28n" path="res://scenes/stickman.tscn" id="1_rulcn"]
 [ext_resource type="PackedScene" uid="uid://bclj75titb7y4" path="res://scenes/water.tscn" id="3_fnwae"]
+[ext_resource type="Theme" uid="uid://dseby6araf4xx" path="res://themes/label.tres" id="4_6rd5m"]
+[ext_resource type="Theme" uid="uid://imhfj220rujp" path="res://themes/header_label.tres" id="5_5hcta"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_iruth")
 
 [node name="Background" type="ColorRect" parent="."]
-offset_right = 1941.0
-offset_bottom = 1098.0
+offset_left = -5241.0
+offset_top = -4556.0
+offset_right = 11382.0
+offset_bottom = 4188.0
 
-[node name="Cliff" type="StaticBody2D" parent="."]
-
-[node name="CliffColour" type="ColorRect" parent="Cliff"]
-offset_left = -45.0
-offset_top = 223.0
+[node name="Cliff" type="ColorRect" parent="."]
+offset_left = -5101.0
 offset_right = 327.0
-offset_bottom = 1999.0
+offset_bottom = 4030.0
 color = Color(0.362829, 0.362829, 0.362829, 1)
 
 [node name="Stickman" parent="." instance=ExtResource("1_rulcn")]
@@ -26,4 +27,45 @@ position = Vector2(315, 187)
 scale = Vector2(0.2, 0.2)
 
 [node name="Water" parent="." instance=ExtResource("3_fnwae")]
-position = Vector2(235, 40)
+position = Vector2(925, 914)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+visible = false
+scale = Vector2(0.2, 0.2)
+zoom = Vector2(0.7, 0.7)
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI"]
+offset_left = 1390.0
+offset_top = 36.0
+offset_right = 1880.0
+offset_bottom = 76.0
+size_flags_horizontal = 3
+theme_override_constants/separation = 20
+
+[node name="TotalFlips" type="Label" parent="UI/HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme = ExtResource("4_6rd5m")
+text = "Flips:  0"
+
+[node name="TotalTwists" type="Label" parent="UI/HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme = ExtResource("4_6rd5m")
+text = "Twists:  0"
+
+[node name="EntryScore" type="Label" parent="UI/HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme = ExtResource("4_6rd5m")
+text = "Entry: "
+
+[node name="TotalScore" type="Label" parent="UI"]
+offset_left = 1392.0
+offset_top = 110.0
+offset_right = 1627.0
+offset_bottom = 165.0
+theme = ExtResource("5_5hcta")
+theme_type_variation = &"HeaderLarge"

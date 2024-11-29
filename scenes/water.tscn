@@ -10,14 +10,13 @@ collision_mask = 3
 script = ExtResource("1_4klch")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-offset_left = -1320.0
-offset_top = 894.0
-offset_right = 4243.0
-offset_bottom = 1407.0
+offset_left = -6345.0
+offset_right = 9431.0
+offset_bottom = 4980.0
 color = Color(0.447059, 0.807843, 1, 0.603922)
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
-position = Vector2(720, 897)
+position = Vector2(0, 2)
 shape = SubResource("WorldBoundaryShape2D_2vd3o")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
